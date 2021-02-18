@@ -6,7 +6,7 @@ set termguicolors               " enables 24-bit RGB colors
 set cmdheight=2                 " Number of screen lines to use for the command-line. 
 syntax enable                   " syntax highlighting
 colorscheme molokai             " installation ~/.config/nvim/colors/molokai.vim
-highlight Normal guibg=none     " transparent background
+highlight Normal guibg=none
 
 " Line Numbers, Cursor and Window
 set nu						    " set current line numbers
@@ -29,7 +29,7 @@ set incsearch                   " highlights while pattern is typed
 set ignorecase                  " If the 'ignorecase' option is on, the case of normal letters is ignored.
 set smartcase                   " Override the 'ignorecase' option if the search pattern contains upper	case characters. 
 set hlsearch                    " highlights searched pattern
-" set nohlsearch                " stops highlighting for the hlsearch option
+set nohlsearch                  " stops highlighting for the hlsearch option
 " :noh - remove highlight
 "This unsets the last search pattern register by hitting return"
 nnoremap <CR> :noh<CR><CR>
@@ -37,8 +37,26 @@ nnoremap <CR> :noh<CR><CR>
 
 " Plugins
 call plug#begin('~/.vim/plugged')
+" Language Server
+Plug 'neovim/nvim-lspconfig'    " Install language server for example lua.
+Plug 'nvim-lua/completion-nvim' " Auto completion framework for neovims's built-in LSP
+
+
+
+" Fuzzy Finder
+Plug 'nvim-lua/popup.nvim'      " An implementation of the Popup API from vim in Neovim.
+Plug 'nvim-lua/plenary.nvim'    " Luafunctions which you do not want to write twice
 Plug 'nvim-telescope/telescope.nvim'
 
 call plug#end()
+
+" Setup nvim-telescope fuzzy fidner word search over project
+" execute: hold space and press shortkeys
+let mapleader = " " 
+nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+
+
+
 
 
