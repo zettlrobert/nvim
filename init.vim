@@ -1,12 +1,21 @@
 " Nvim configuration
 
+" Enviorement Variables
+let $RTP=split(&runtimepath, ',')[0]    " set variable for runtime path
+let $RC="$HOME/.config/nvim/init.vim"   " set variiable to start editing init.vim
+
 " Default, colorscheme, background, layout
 set noerrorbells			    " block the damn errorbells from annoying you
 set termguicolors               " enables 24-bit RGB colors
 set cmdheight=2                 " Number of screen lines to use for the command-line. 
+set hidden                      " Allow switching without full written out buffer
+set noswapfile                  " Turn off swap files
 syntax enable                   " syntax highlighting
 colorscheme molokai             " installation ~/.config/nvim/colors/molokai.vim
 highlight Normal guibg=none
+filetype plugin indent on       " indent and autodetection for filetype (custom)
+set backspace=indent,eol,start  " allow to use backspace
+
 
 " Line Numbers, Cursor and Window
 set nu						    " set current line numbers
@@ -31,15 +40,19 @@ set smartcase                   " Override the 'ignorecase' option if the search
 set hlsearch                    " highlights searched pattern
 set nohlsearch                  " stops highlighting for the hlsearch option
 " :noh - remove highlight
-"This unsets the last search pattern register by hitting return"
+" This unsets the last search pattern register by hitting return"
 nnoremap <CR> :noh<CR><CR>
 
 
 " Plugins
-call plug#begin('~/.vim/plugged')
+" the path for the plugins has to match the location where nvim gets the
+" configuration
+call plug#begin('~/.nvim/plugged')
 " Language Server
 Plug 'neovim/nvim-lspconfig'    " Install language server for example lua.
 Plug 'nvim-lua/completion-nvim' " Auto completion framework for neovims's built-in LSP
+
+" coc for IntelliSense
 
 
 
@@ -55,8 +68,13 @@ call plug#end()
 let mapleader = " " 
 nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+" nnoremap <leader>ff :lua require('telescope.builtin').find_files({ search = vim.fn.input("Grep For File > ")})<cr>
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
 
-
-
-
-
+" System Dependencies
+" sharkdp/bat
+" sharkdp/fd
+" BurntSushi/ripgrep
+" nvim-tresssitter/nvim-treesitter
+" neovim LSP
+" devicons
