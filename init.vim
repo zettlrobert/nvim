@@ -1,13 +1,16 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Nvim configuration
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Enviorement Variables
+" Enviorement Variables & Path
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let $RTP=split(&runtimepath, ',')[0]    " set variable for runtime path
 let $RC="$HOME/.config/nvim/init.vim"   " set variiable to start editing init.vim
+
+set path=.,**                           " set path to current file and current 
+                                        " dir with all of it's children
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -26,8 +29,7 @@ set backspace=indent,eol,start  " allow to use backspace
 
 let g:lightline = {
     \ 'colorscheme': 'molokai',
-    \ }
-
+    \}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Line Numbers, Cursor and Window
@@ -45,6 +47,7 @@ set colorcolumn=80              " colorcolumn is a comma separated list of scree
 set tabstop=4 softtabstop=4	    " tabstop to four and softtabstop to 4 ensure 8 where necessary
 set shiftwidth=4			    " the indentation width 
 set expandtab				    " prevent \t, tabs will be expanded into spaces
+set autoindent                  " copy indent from current line when starting new line
 set smartindent				    " smart autoindenting when starting a new line
 set nowrap                      " prevents line wrapping
 set scrolloff=8                 " begins scrolling down 8 lines before cursor hits end of screen:w
@@ -91,6 +94,9 @@ Plug 'preservim/nerdtree'
 " emmet html autocompletion
 Plug 'mattn/emmet-vim'          " html emmet ctrl + y  +,
 
+" vim-devicons 
+Plug 'ryanoasis/vim-devicons'
+
 call plug#end()
 
 
@@ -112,10 +118,10 @@ nnoremap <leader>ff :lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>fg :lua require('telescope.builtin').live_grep()<cr>
 
 " Lists open buffers in the current vim instance.
-nnoremap <leader>fb :lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>lb :lua require('telescope.builtin').buffers()<cr>
 
 " Lists Available help tags and open help document
-nnoremap <leader>fh :lua require('telescope.builtin').help_tags()<cr>
+nnoremap <leader>lh :lua require('telescope.builtin').help_tags()<cr>
 
 " Searches for a string under the cursor in current directory 
 nnoremap <leader>ps :lua require('telescope.builtin').grep_string()<cr>
