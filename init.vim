@@ -2,7 +2,6 @@
 " Nvim configuration
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enviorement Variables & Path
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -10,7 +9,7 @@ let $RTP=split(&runtimepath, ',')[0] " set variable for runtime path
 let $RC="$HOME/.config/nvim/init.vim" " set variiable to start editing init.vim
 
 set path=.,** " set path to current file and current
-                                    " dir with all of it's children
+              " dir with all of it's children
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -21,14 +20,26 @@ set termguicolors " enables 24-bit RGB colors
 set cmdheight=2 " Number of screen lines to use for the command-line.
 set hidden " Allow switching without full written out buffer
 set noswapfile " Turn off swap files
+set scrolloff=15 " Always show at least x lines above/below the cursor
 syntax enable " syntax highlighting
 colorscheme molokai " installation ~/.config/nvim/colors/molokai.vim
 highlight Normal guibg=none
 filetype plugin indent on " indent and autodetection for filetype (custom)
 set backspace=indent,eol,start " allow to use backspace
+
+" hi Conceal         ctermfg=7 ctermbg=242 guifg=Grey guibg=rgba(0,0,0,0.8)
+
+" lightline configuration
 let g:lightline = {
-    \'colorscheme': 'molokai',
-    \}
+      \ 'colorscheme': 'molokai',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -71,6 +82,7 @@ nnoremap <CR> :noh<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " the path for the plugins has to match the plugin location
 call plug#begin('~/.config/nvim/plugins')
+
 " Language Server
 Plug 'neovim/nvim-lspconfig' " Install language server for example lua.
 Plug 'nvim-lua/completion-nvim' " Auto completion framework for neovims's built-in LSP
@@ -92,24 +104,89 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'} " Manage coc extensions with coc
 " - coc-json
 " - coc.vetur
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""
 " Fuzzy Finder
+"""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'nvim-lua/popup.nvim' " An implementation of the Popup API from vim in Neovim.
 Plug 'nvim-lua/plenary.nvim' " Luafunctions which you do not want to write twice
 Plug 'nvim-telescope/telescope.nvim'
 
-" lightline statusbar
-Plug 'itchyny/lightline.vim' " light and configurable statusline/tablien plugin for vim.
 
-" nerdtree - fileexporer for vim
+"""""""""""""""""""""""""""""""""""""""""""""""
+" Git
+"""""""""""""""""""""""""""""""""""""""""""""""
+" :G
+Plug 'tpope/vim-fugitive'
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+" Commentary
+"""""""""""""""""""""""""""""""""""""""""""""""
+" gcc - comment out line with count
+" gc - comment out target motion - gcap comment out paragraph
+Plug 'tpope/vim-commentary'
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+" Indentation Lines
+"""""""""""""""""""""""""""""""""""""""""""""""
+" This plugin is used for displaying thin vertical lines at each indentation level
+Plug 'Yggdroot/indentLine'
+Plug 'lukas-reineke/indent-blankline.nvim'
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+" lightline statusbar
+"""""""""""""""""""""""""""""""""""""""""""""""
+" light and configurable statusline/tablien plugin for vim.
+Plug 'itchyny/lightline.vim' 
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+" nerdtree - file explorer for vim
+"""""""""""""""""""""""""""""""""""""""""""""""
+" ALT + F opends nerdtree
 Plug 'preservim/nerdtree'
 
-" emmet html autocompletion
-Plug 'mattn/emmet-vim' " html emmet ctrl + y +,
+"""""""""""""""""""""""""""""""""""""""""""""""
+"_Insert or delete brackets, parens, quotes in pair.
+"""""""""""""""""""""""""""""""""""""""""""""""
+" Plug 'jiangmiao/auto-pairs'
 
-" vim-devicons
+"""""""""""""""""""""""""""""""""""""""""""""""
+"_All about 'surroundings'
+"""""""""""""""""""""""""""""""""""""""""""""""
+" cs"' inside \"Hello world" changes it to 'Hello World'
+" cs'<q> to change to <q>Hello World</q>
+" cst" \"Hello World"
+Plug 'tpope/vim-surround'
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+" emmet html autocompletion
+"""""""""""""""""""""""""""""""""""""""""""""""
+" html emmet ctrl + y +,
+Plug 'mattn/emmet-vim' 
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+" syntax highlighting - polygot is a collection of language packs for vim
+"""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'sheerun/vim-polyglot'
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+" Color highlighter for Neovim
+"""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'norcalli/nvim-colorizer.lua'
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+" colorscheme and vim-devicons
+"""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'ryanoasis/vim-devicons'
+" Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+Plug 'hzchirs/vim-material'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
 call plug#end()
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+" Setup colorizer for every filetype
+lua require'colorizer'.setup()
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

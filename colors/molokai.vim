@@ -26,6 +26,7 @@ else
     let s:molokai_original = 0
 endif
 
+hi Conceal         ctermfg=7 ctermbg=242 guifg=Grey guibg=rgba(0,0,0,0.8)
 
 hi Boolean         guifg=#AE81FF
 hi Character       guifg=#E6DB74
