@@ -102,7 +102,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'} " Manage coc extensions with coc
 " - coc-git
 " - coc-tsserver
 " - coc-json
-" - coc.vetur
+" - coc-vetur
+" - coc-markdownlint
 
 
 """""""""""""""""""""""""""""""""""""""""""""""
