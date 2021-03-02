@@ -2,6 +2,7 @@
 " Nvim configuration
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enviorement Variables & Path
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -15,17 +16,19 @@ set path=.,** " set path to current file and current
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Default, colorscheme, background, layout
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set noerrorbells " block the damn errorbells from annoying you
-set termguicolors " enables 24-bit RGB colors
-set cmdheight=2 " Number of screen lines to use for the command-line.
-set hidden " Allow switching without full written out buffer
-set noswapfile " Turn off swap files
-set scrolloff=15 " Always show at least x lines above/below the cursor
-syntax enable " syntax highlighting
-colorscheme molokai " installation ~/.config/nvim/colors/molokai.vim
-highlight Normal guibg=none
-filetype plugin indent on " indent and autodetection for filetype (custom)
-set backspace=indent,eol,start " allow to use backspace
+set noerrorbells                " block the damn errorbells from annoying you
+set termguicolors               " enables 24-bit RGB colors
+set cmdheight=2                 " screen lines to use for the command-line.
+set hidden                      " Allow switching without full written out buffer
+set noswapfile                  " Turn off swap files
+set scrolloff=15                " show at least x lines above/below the cursor
+set showtabline=2               " Always show the tabline 
+syntax enable                   " syntax highlighting
+colorscheme molokai             " installation ~/.config/nvim/colors/molokai.vim
+highlight Normal guibg=none     
+                                " transparent bg
+filetype plugin indent on       " indent and autodetection for filetype (custom)
+set backspace=indent,eol,start  " allow to use backspace
 
 " hi Conceal         ctermfg=7 ctermbg=242 guifg=Grey guibg=rgba(0,0,0,0.8)
 
@@ -34,7 +37,7 @@ let g:lightline = {
       \ 'colorscheme': 'molokai',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
       \ },
       \ 'component_function': {
       \   'gitbranch': 'FugitiveHead'
@@ -45,35 +48,41 @@ let g:lightline = {
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Line Numbers, Cursor and Window
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nu " set current line numbers
-set relativenumber " set the relative line number to the current cursor position
-set guicursor= " block cursor
-set signcolumn=yes " sets a sign column on the left of the window
-set colorcolumn=80 " colorcolumn is a comma separated list of screen columns that arehighlighted with ColorColumn
+set nu                        " current line number
+set relativenumber            " relative line number to the current  position
+set guicursor=                " block cursor
+set signcolumn=yes            " a sign column on the left of the window
+set colorcolumn=80            " colorcolumn is a comma separated list of screen columns,
+                              " that arehighlighted with ColorColumn
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tabs, indent, scrolling
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set tabstop=4 softtabstop=4 " tabstop to four and softtabstop to 4 ensure 8 where necessary
-set shiftwidth=4 " the indentation width
-set expandtab " prevent \t, tabs will be expanded into spaces
-set autoindent " copy indent from current line when starting new line
-set smartindent " smart autoindenting when starting a new line
-set nowrap " prevents line wrapping
-set scrolloff=8 " begins scrolling down 8 lines before cursor hits end of screen:w
+set tabstop=4 softtabstop=4  " tabstop to four
+                             " softtabstop to 4
+                             " ensure 8 where necessary
+set shiftwidth=4             " the indentation width
+set expandtab                " prevent \t, tabs will be expanded into spaces
+set autoindent               " copy indent from current line when starting new line
+set smartindent              " smart autoindenting when starting a new line
+set nowrap                   " prevents line wrapping
+set scrolloff=8              " begins scrolling down 8 lines
+                             " before cursor hits end of screen:w
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Highlighting, search
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set incsearch " highlights while pattern is typed
-set ignorecase " If the 'ignorecase' option is on, the case of normal letters is ignored.
-set smartcase " Override the 'ignorecase' option if the search pattern contains upper case characters.
-set hlsearch " highlights searched pattern
-set nohlsearch " stops highlighting for the hlsearch option
-" :noh - remove highlight
-" This unsets the last search pattern register by hitting return"
+set incsearch                 " highlights while pattern is typed
+set ignorecase                " If the 'ignorecase' option is on,
+                              " the case of normal letters is ignored.
+set smartcase                 " Override the 'ignorecase' option,
+                              " if search pattern contains upper case characters.
+set hlsearch                  " highlights searched pattern
+set nohlsearch                " stops highlighting for the hlsearch option
+                              " :noh - remove highlight
+                              " This unsets the last search pattern register 
 nnoremap <CR> :noh<CR>
 
 
@@ -84,8 +93,8 @@ nnoremap <CR> :noh<CR>
 call plug#begin('~/.config/nvim/plugins')
 
 " Language Server
-Plug 'neovim/nvim-lspconfig' " Install language server for example lua.
-Plug 'nvim-lua/completion-nvim' " Auto completion framework for neovims's built-in LSP
+Plug 'neovim/nvim-lspconfig'        " Install language server for example lua.
+Plug 'nvim-lua/completion-nvim'     " Auto completion framework for built-in LSP
 
 " coc for autocompletion
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Manage coc extensions with coc
@@ -98,12 +107,14 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'} " Manage coc extensions with coc
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Extensions
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" - coc-prettier
-" - coc-git
-" - coc-tsserver
-" - coc-json
-" - coc-vetur
-" - coc-markdownlint
+let g:coc_global_extensions = [
+            \'coc-prettier',
+            \'coc-git',
+            \'coc-tsserver',
+            \'coc-json',
+            \'coc-vetur',
+            \'coc-markdown'
+            \]
 
 
 """""""""""""""""""""""""""""""""""""""""""""""
@@ -169,6 +180,7 @@ Plug 'mattn/emmet-vim'
 " syntax highlighting - polygot is a collection of language packs for vim
 """""""""""""""""""""""""""""""""""""""""""""""
 Plug 'sheerun/vim-polyglot'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 """""""""""""""""""""""""""""""""""""""""""""""
 " Color highlighter for Neovim
@@ -183,12 +195,39 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'hzchirs/vim-material'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
+"""""""""""""""""""""""""""""""""""""""""""""""
+" Langauges and Frameworks
+"""""""""""""""""""""""""""""""""""""""""""""""
+" react
+Plug 'maxmellon/vim-jsx-pretty'     " react highlighting
+Plug 'HerringtonDarkholme/yats.vim' " .tsx (reat with tyepscript)
+
+
 call plug#end()
 
-"""""""""""""""""""""""""""""""""""""""""""""""
-" Setup colorizer for every filetype
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Setup Plugins
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 lua require'colorizer'.setup()
 
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true
+  },
+}
+EOF
+
+" Installed tresssitter with :TSInstall
+"""""""""""""""""""""""""""""""""""""""""""""""
+" lua
+" yaml
+" json
+" typescript
+" javascript
+" html
+" regex
+" vue
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " LEADER & Shortcuts
@@ -211,7 +250,7 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 nnoremap <leader>ff :lua require('telescope.builtin').find_files()<cr>
 " Searches in current directory files. (respecting .gitignore)
 nnoremap <leader>fg :lua require('telescope.builtin').live_grep()<cr>
-" Lists open buffers in the current vim instance.
+" Lists open buffers in the- current vim instance.
 nnoremap <leader>lb :lua require('telescope.builtin').buffers()<cr>
 " Lists Available help tags and open help document
 nnoremap <leader>lh :lua require('telescope.builtin').help_tags()<cr>
@@ -219,7 +258,10 @@ nnoremap <leader>lh :lua require('telescope.builtin').help_tags()<cr>
 nnoremap <leader>ps :lua require('telescope.builtin').grep_string()<cr>
 " Lists available plugin/user commands and run it.
 nnoremap <leader>lc :lua require('telescope.builtin').commands()<cr>
-" Lists vim registers and edit or paste seleciton.
+" Lists treesitter information
+nnoremap <leader>tre :lua require('telescope.builtin').treesitter()<cr>
+
+" Lists vim registers and edit or paste seleciton. - Clipboard has to be set up
 " nnoremap <leader>lr :lua require('telescope.builtin').registers()<cr>
 
 
@@ -228,6 +270,19 @@ nnoremap <leader>lc :lua require('telescope.builtin').commands()<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " A is for ALT
 nnoremap <A-f> :NERDTreeToggle<cr>
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Functions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"function MyTabLine()
+"      parent directory %:p:h
+"      " file name %:p:t
+"      let parentDir = '%:p:h'
+"      " return parentDir 
+"endfunction
+
 
 
 " System Dependencies
