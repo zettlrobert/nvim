@@ -2,15 +2,13 @@
 " Nvim configuration
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enviorement Variables & Path
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let $RTP=split(&runtimepath, ',')[0] " set variable for runtime path
-let $RC="$HOME/.config/nvim/init.vim" " set variiable to start editing init.vim
-
-set path=.,** " set path to current file and current
-              " dir with all of it's children
+let $RTP=split(&runtimepath, ',')[0]        " set variable for runtime path
+let $RC="$HOME/.config/nvim/init.vim"       " set variiable to start editing init.vim
+set path=.,**                               " set path to current file and current
+                                            " dir with all of it's children
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -54,6 +52,7 @@ set guicursor=                " block cursor
 set signcolumn=yes            " a sign column on the left of the window
 set colorcolumn=80            " colorcolumn is a comma separated list of screen columns,
                               " that arehighlighted with ColorColumn
+set splitright                " vsp opens window to the right of current window.
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -100,10 +99,11 @@ Plug 'nvim-lua/completion-nvim'     " Auto completion framework for built-in LSP
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Manage coc extensions with coc
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Extension Dependencies
+" Extension Dependencies on System
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " - eslint
 " - eslint-plugin-vue
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Extensions
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -113,16 +113,16 @@ let g:coc_global_extensions = [
             \'coc-tsserver',
             \'coc-json',
             \'coc-vetur',
-            \'coc-markdown'
+            \'coc-markdownlint'
             \]
 
 
 """""""""""""""""""""""""""""""""""""""""""""""
 " Fuzzy Finder
 """""""""""""""""""""""""""""""""""""""""""""""
-Plug 'nvim-lua/popup.nvim' " An implementation of the Popup API from vim in Neovim.
-Plug 'nvim-lua/plenary.nvim' " Luafunctions which you do not want to write twice
-Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-lua/popup.nvim'               " An implementation of the Popup API from vim in Neovim.
+Plug 'nvim-lua/plenary.nvim'             " Luafunctions which you do not want to write twice
+Plug 'nvim-telescope/telescope.nvim'     " Find, Filter, Preview, Pick.
 
 
 """""""""""""""""""""""""""""""""""""""""""""""
@@ -158,12 +158,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'preservim/nerdtree'
 
 """""""""""""""""""""""""""""""""""""""""""""""
-"_Insert or delete brackets, parens, quotes in pair.
-"""""""""""""""""""""""""""""""""""""""""""""""
-" Plug 'jiangmiao/auto-pairs'
-
-"""""""""""""""""""""""""""""""""""""""""""""""
-"_All about 'surroundings'
+" All about 'surroundings'
 """""""""""""""""""""""""""""""""""""""""""""""
 " cs"' inside \"Hello world" changes it to 'Hello World'
 " cs'<q> to change to <q>Hello World</q>
@@ -191,19 +186,20 @@ Plug 'norcalli/nvim-colorizer.lua'
 " colorscheme and vim-devicons
 """""""""""""""""""""""""""""""""""""""""""""""
 Plug 'ryanoasis/vim-devicons'
-" Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'hzchirs/vim-material'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
 """""""""""""""""""""""""""""""""""""""""""""""
 " Langauges and Frameworks
 """""""""""""""""""""""""""""""""""""""""""""""
-" react
-Plug 'maxmellon/vim-jsx-pretty'     " react highlighting
-Plug 'HerringtonDarkholme/yats.vim' " .tsx (reat with tyepscript)
+" React
+"""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'maxmellon/vim-jsx-pretty'          " react highlighting
+Plug 'HerringtonDarkholme/yats.vim'      " .tsx (reat with tyepscript)
 
 
 call plug#end()
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Setup Plugins
@@ -228,6 +224,7 @@ EOF
 " html
 " regex
 " vue
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " LEADER & Shortcuts
@@ -271,6 +268,17 @@ nnoremap <leader>tre :lua require('telescope.builtin').treesitter()<cr>
 " A is for ALT
 nnoremap <A-f> :NERDTreeToggle<cr>
 
+" Moving between windows
+nnoremap <C-J> <C-W><C-J>           " Select window down
+nnoremap <C-K> <C-W><C-K>           " Select window up
+nnoremap <C-L> <C-W><C-L>           " Select window right
+nnoremap <C-H> <C-W><C-H>           " Select window left
+" Max out height of current split: <C-W> _
+" Max out width of current split: <C-W> |
+" Normalize all split sizes: <C-W> =
+" Swap top/bottom or left/right split: <C-W> R 
+" Break out current window into a new tabview: <C-W> T
+" Close every window but the current one: <C-W> o
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -289,7 +297,6 @@ nnoremap <A-f> :NERDTreeToggle<cr>
 " sharkdp/bat
 " sharkdp/fd
 " BurntSushi/ripgrep
-" nvim-tresssitter/nvim-treesitter
+" nvim-treessitter/nvim-treesitter
 " neovim LSP
-" devicons
 " devicons
