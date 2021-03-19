@@ -103,6 +103,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'} " Manage coc extensions with coc
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " - eslint
 " - eslint-plugin-vue
+" - rust
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Extensions
@@ -129,6 +130,16 @@ Plug 'nvim-telescope/telescope.nvim'     " Find, Filter, Preview, Pick.
 """""""""""""""""""""""""""""""""""""""""""""""
 " :G
 Plug 'tpope/vim-fugitive'
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+" vim-markdown-composer
+"""""""""""""""""""""""""""""""""""""""""""""""
+" move into the bundle directory and run
+" cargo build --release
+Plug 'euclio/vim-markdown-composer'
+" prevent autostart
+" :ComposerStart to start preview server
+let g:markdown_composer_autostart = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""
 " Commentary
