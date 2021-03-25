@@ -22,7 +22,7 @@ set noswapfile                  " Turn off swap files
 set scrolloff=15                " show at least x lines above/below the cursor
 set showtabline=2               " Always show the tabline 
 syntax enable                   " syntax highlighting
-colorscheme molokai             " installation ~/.config/nvim/colors/molokai.vim
+colorscheme nord             " installation ~/.config/nvim/colors/molokai.vim
 highlight Normal guibg=none     
                                 " transparent bg
 filetype plugin indent on       " indent and autodetection for filetype (custom)
@@ -53,6 +53,7 @@ set signcolumn=yes            " a sign column on the left of the window
 set colorcolumn=80            " colorcolumn is a comma separated list of screen columns,
                               " that arehighlighted with ColorColumn
 set splitright                " vsp opens window to the right of current window.
+set cursorline                " set the cursorline
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
