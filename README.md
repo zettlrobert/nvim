@@ -42,3 +42,7 @@ TODO:
 - whichkey
 - blame
 
+## Language Servers
+neovim-lspconfig
+
+
