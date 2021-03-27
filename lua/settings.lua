@@ -33,3 +33,5 @@ vim.wo.signcolumn = "yes:2"                   -- Always show the signcolumn, oth
 vim.cmd('set colorcolumn=100')                -- Colorcolumn
 
 vim.o.guifont = "JetBrainsMono\\ Nerd\\ Font\\ Mono:h18"
+vim.cmd('highlight Normal guibg=none')
+
