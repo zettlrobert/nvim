@@ -29,9 +29,7 @@ vim.o.splitright = true                       -- Vertical splits will automatica
 vim.wo.number = true                          -- Set numbered lines
 vim.wo.relativenumber = true                  -- Set relative line numbers
 vim.wo.cursorline = true                      -- Enable highlighting of the current line
-vim.wo.signcolumn = "yes:3"                   -- Always show the signcolumn, otherwise it would shift the text each time
+vim.wo.signcolumn = "yes:2"                   -- Always show the signcolumn, otherwise it would shift the text each time
 vim.cmd('set colorcolumn=100')                -- Colorcolumn
 
-
 vim.o.guifont = "JetBrainsMono\\ Nerd\\ Font\\ Mono:h18"
-vim.cmd('highlight Normal guibg=none')
