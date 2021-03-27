@@ -20,7 +20,10 @@ require('nvim-autopairs')
 -- LSP
 require('lsp')
 require('lsp.lua-ls')
+require('lsp.tsserver-ls')
+require('lsp.json-ls')
+require('lsp.css-ls')
+require('lsp.vue-ls')
 
 -- Telescope
 require('nvim-telescope')
-
