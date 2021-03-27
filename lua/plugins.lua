@@ -1,17 +1,20 @@
 local execute = vim.api.nvim_command
 local fn = vim.fn
 
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 
 if fn.empty(fn.glob(install_path)) > 0 then
-  execute('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
-  execute 'packadd packer.nvim'
+    execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
+    execute 'packadd packer.nvim'
 end
 
+vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when there are changes in plugins.lua
 
-return require('packer').startup(function()
+require('packer').init({display = {auto_clean = false}})
+
+return require('packer').startup(function(use)
   -- Packer can manage itself
-  use {'wbthomason/packer.nvim', opt = true}
+  use 'wbthomason/packer.nvim'
 
   -- Explorer
   use 'kyazdani42/nvim-tree.lua'
@@ -21,7 +24,6 @@ return require('packer').startup(function()
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-media-files.nvim'
-
 
   -- Autocomplete
   use 'hrsh7th/nvim-compe'
@@ -38,7 +40,7 @@ return require('packer').startup(function()
   use 'mfussenegger/nvim-dap'
 
   -- Treesitter
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
   use 'nvim-treesitter/playground'
   use 'p00f/nvim-ts-rainbow'
 
@@ -56,5 +58,8 @@ return require('packer').startup(function()
 
   -- Git
   use 'lewis6991/gitsigns.nvim'
+
+  -- Comments
+  use 'b3nj5m1n/kommentary'
 
 end)

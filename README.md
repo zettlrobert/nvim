@@ -1,5 +1,21 @@
 ## Install Lua Langauge Server
 
+# Install the latest Neovim
+
+````
+cd ~
+sudo rm -r neovim
+git clone https://github.com/neovim/neovim
+cd neovim
+sudo make CMAKE_BUILD_TYPE=Release install
+cd ~
+sudo rm -r neovim
+````
+
+
+## sumneko ls
+checkout - 1.19.1 - issue for master opened.
+
 1. Install `Ninja`
 
 	sudo apt install ninja-build
@@ -21,4 +37,5 @@
 
 TODO:
 - galaxyline
+- checkout sumneko response to open issue
 
