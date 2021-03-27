@@ -22,7 +22,7 @@ return require('packer').startup(function(use)
   -- Telescope
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
-  use 'nvim-telescope/telescope.nvim'
+  use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}}
   use 'nvim-telescope/telescope-media-files.nvim'
 
   -- Autocomplete

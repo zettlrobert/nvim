@@ -38,4 +38,7 @@ checkout - 1.19.1 - issue for master opened.
 TODO:
 - galaxyline
 - checkout sumneko response to open issue
+- nvim startify
+- whichkey
+- blame
 
