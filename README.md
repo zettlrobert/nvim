@@ -41,8 +41,13 @@ TODO:
 - nvim startify
 - whichkey
 - blame
+- prettier
+- autopairs
 
 ## Language Servers
 neovim-lspconfig
+
+## EFM-Langauge Server
+Prerequesites: Go Lang
 
 

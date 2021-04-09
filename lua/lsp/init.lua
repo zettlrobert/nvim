@@ -27,7 +27,7 @@ vim.fn.sign_define("LspDiagnosticsSignInformation", {
 -- config defaults
 -- -----------------------------------------------------------------
 local nvim_lsp = require('lspconfig')
-local on_attach = function(client, bufnr)
+local on_attach = function(client)
 
   -- Set autocommands conditional on server_capabilities
   if client.resolved_capabilities.document_highlight then
@@ -45,7 +45,7 @@ local on_attach = function(client, bufnr)
   end
 end
 
--- Use a loop to conveniently both setup defined servers 
+-- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
 local servers = { "pyright", "rust_analyzer", "tsserver" }
 for _, lsp in ipairs(servers) do
