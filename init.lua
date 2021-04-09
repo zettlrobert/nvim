@@ -21,14 +21,13 @@ require('nvim-autopairs')
 -- require('lsp/efm')
 
 -- LSP
---[[ require('lsp')
+require('lsp')
 require('lsp.lua-ls')
 require('lsp.diagnostic-languageserver')
 require('lsp.tsserver-ls')
 require('lsp.json-ls')
 require('lsp.css-ls')
-require('lsp.vue-ls') ]]
-require('lsp.lsp')
+require('lsp.vue-ls')
 
 -- Telescope
 require('nvim-telescope')
