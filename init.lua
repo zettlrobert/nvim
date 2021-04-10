@@ -28,6 +28,7 @@ require('lsp.tsserver-ls')
 require('lsp.json-ls')
 require('lsp.css-ls')
 require('lsp.vue-ls')
+require('lsp.bash')
 
 -- Telescope
 require('nvim-telescope')
